@@ -1,0 +1,761 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Lato', sans-serif;
+    background-color: var(--main-background-color);
+}
+body::-webkit-scrollbar{
+        width: 9px;
+        background-color: #383838;
+}
+body::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: #6b6b6b;
+}
+body::-webkit-scrollbar-track{
+    border-radius: 10px;
+    background-color: #383838;
+}
+/* Global variables */
+:root{
+    --background-color: #000;
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-dark-color: #10121a;
+    --background-dark-grey: #191d2b;
+    --background-light-color: #f1f1f1;
+    --background-light-color-2: rgba(3,127,255, .3);
+    --border-color: #2e344e;
+    --white-color: #ffffff;
+    --font-light-color: #a4acc4;
+    --font-dark-color: #313131;
+    --font-dark-color-2: #151515;
+    --sidebar-dark-color: #191d2b;
+    --scrollbar-bg-color: #383838 ;
+    --scrollbar-thump-color: #6b6b6b ;
+    --scrollbar-track-color: #383838 ;
+    --main-background-color: #0B1315;
+    --form-background-color: #0F1C22;
+    --gold-color: #C5B292;
+
+}
+/*Global styles  */
+
+.basic-title{
+    display: flex;
+    flex-direction: column;  
+    margin: 2rem 0;
+}
+.basic-title span{
+    font-size: 1rem;
+    color: var(--gold-color);
+    font-family: 'Courgette', cursive;
+}
+.basic-title  h2{
+    margin: 1rem 0;
+    letter-spacing: 10px;
+    font-size: 3rem;
+    color: var(--gold-color);
+}
+.button-top{
+    position: fixed;
+    bottom: 15%;
+    right: 5%;
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+    background: transparent;
+    border: 2px solid var(--gold-color);
+    align-items: center;
+    justify-content: center;
+    display: none;  
+    opacity: .3;
+}
+.display-block{
+    transition: All .5s ease;
+    display: flex;
+}
+.display-none{
+    display: none;
+}
+.button-top i{
+    font-size: 4rem;    
+    color: var(--gold-color);
+    font-weight: normal;
+}
+p{
+    letter-spacing: 1px;
+    font-size: 1rem;
+    color: whitesmoke;
+    line-height: 24px;
+}
+h6{
+    font-size: 1.2rem;
+    color: var(--gold-color)
+}
+.btn{
+    background: transparent;
+    padding: 1rem 3rem;
+    margin-top: 2rem;
+    border: 1px solid var(--gold-color);
+    color: var(--white-color);
+    border-radius: 3px;
+    font-family: 'montserrat';
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: .8s;
+}
+.btn:hover{
+    color: var(--white-color);
+}
+.btn::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: var(--gold-color);
+    z-index: -1;
+    transition: .8s;
+    top: 0;
+    border-radius: 0 0 50% 50%;
+}
+.btn:hover::before{
+    height: 180%;
+}
+
+a{
+    position: relative;
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 1rem;
+    display: inline-block;
+    padding: 10px 30px;
+    letter-spacing: 2px;
+    transition: .5s ease;
+    margin: 1rem;
+}
+a:hover{
+    color: var(--white-color);
+    background-color: var(--background-dark-grey    );
+}
+a span{
+    display: block;
+    position: absolute;
+    background-color: var(--gold-color);
+}
+a span:nth-child(1){
+    width: 1px;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    transform-origin: top;
+    transition: transform .5s;
+    transform: scaleY(0);
+}
+a:hover span:nth-child(1){
+    transform-origin: bottom;
+    transition: transform .5s;
+    transform: scaleY(1);
+}
+a span:nth-child(2){
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    transform-origin: right;
+    transition: transform .5s;
+    transform: scaleX(0);
+}
+a:hover span:nth-child(2){
+    transform-origin: left;
+    transition: transform .5s;
+    transform: scaleY(1);
+}
+a span:nth-child(3){
+    width: 1px;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    transform-origin: top;
+    transition: transform .5s;
+    transform: scaleY(0);
+    transition-delay: .5s;
+}
+a:hover span:nth-child(3){
+    transform-origin: bottom;
+    transition: transform .5s;
+    transform: scaleY(1);
+    transition-delay: .5s;
+}
+a span:nth-child(4){
+    width: 100%;
+    height: 1px;
+    left: 0;
+    top: 0;
+    transform-origin: right;
+    transition: transform .5s;
+    transform: scaleX(0);
+    transition-delay: .5s;
+}
+a:hover span:nth-child(4){
+    transform-origin: left;
+    transition: transform .5s;
+    transform: scaleX(1);
+    transition-delay: .5s;
+}
+/* ------------------------------------------ */
+
+
+/* Nav section */
+nav{
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--main-background-color);
+    padding: 1rem 0;
+    position: fixed;
+    padding-left: 18%;
+    width: 100%;
+}
+.bar, #checkmenu{
+    display: none;
+}
+nav ul{
+        display: flex;    
+        transition: .4s;
+}
+nav ul li:not(first-child){
+    margin-left: 2rem;
+}
+nav label i{
+    font-size: 2rem;
+    color: var(--white-color);
+    float: right;
+    transform: translateX(400%);
+}
+
+
+nav ul li{
+    list-style: none;
+}
+nav ul li a{
+    border-radius: 5px;
+}
+/* ------------------------------------------ */
+
+    /* Order section */
+section.order-section{
+    padding: 5rem;
+    padding-top: 8rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr );
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.order-section .img{
+    grid-column: span 2;
+}
+.order-section .img img{
+    width: 100%;
+}
+.order-section .order-form{
+    grid-column: span 1;
+    text-align: center;
+    display: flex;  
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: var(--form-background-color);
+}
+.order-section .order-form form{
+    display: flex;
+    flex-direction: column;
+
+}
+.order-section .order-form input:nth-child(4){
+    padding-left: 75px;
+}
+.order-section .order-form input{
+    background: transparent;
+    flex-direction: column;
+    padding: 1rem 3rem 1rem 1rem;
+    margin-top: 2rem;
+    border: 1px solid var(--gold-color);
+    color: var(--white-color);
+    border-radius: 3px;
+
+}
+.order-section .order-form input::placeholder{
+    color: var(--font-light-color);
+}
+.order-section .order-form h2{
+    color: var(--font-light-color);
+    font-size: 3rem;
+    color: var(--gold-color);
+}
+.order-section .order-form span{
+    font-size: 1rem;
+}
+/* ------------------------------------------ */
+
+
+
+
+ /* Chef section */
+section.cheff-section{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr );
+    padding: 5rem;
+}
+
+.cheff-section .cheff-image{
+    padding-left: 1rem;
+    text-align: center;
+   
+}
+.cheff-section .cheff-image img{
+    width: 70%;
+    height: 100%;
+    object-fit: cover;
+}
+.cheff-section .cheff-title{
+    padding-top: 80px;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+}
+/* ------------------------------------------ */
+
+/* Banner section */
+section.banner-section{
+    padding: 5rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr );
+    width: 100%;
+}
+section.banner-section img{
+    width: 100%;
+    height: 100%;
+}
+/* ------------------------------------------ */
+
+/* Menu bar section */
+section.menu-section{
+    text-align: center;                                                                                                                                                                                     
+    padding: 5rem 3rem;
+
+}
+section.menu-section .menu-content{
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(2, 1fr );
+    text-align: left;
+    padding-left: 3rem; 
+}
+section.menu-section .menu-content .menu-item{
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 2rem;
+    left: 0;
+    text-align: left;
+    justify-content: space-between;
+}
+.menu-item .img-content{
+    height: 3rem;
+    width: 3rem;
+    width: 10%;
+}
+.menu-item .img-content img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.menu-item .text-content{
+    width: 80%;
+}
+.menu-item .text-content .title{
+    margin-bottom: .5rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.menu-item .title .cost-content{
+    margin-left: 2rem;
+    width: 10%;
+}
+/* ------------------------------------------ */
+
+/* Video section */
+section.video-section{
+    width: 100%;
+    height: 100%;
+}
+/* ------------------------------------------ */
+
+/* Quote section */
+section.quote-section{
+    padding: 7rem 5rem;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+section.quote-section .offer-slider{
+    width: 100%;   
+    overflow: hidden;
+}
+
+.quote-content{
+    display: flex;
+    position: relative;
+    transition: .5s ease;
+    
+}
+.quote-content .quote-item {
+    padding: 0 2rem;
+}
+.quote-content .quote-item i{
+    color: var(--gold-color);
+    font-size: 3rem;
+    padding-bottom: 5rem;
+}
+.quote-content .quote-item h3{
+    color: whitesmoke;
+    margin: 2rem 0;
+    font-family: 'Courgette', cursive;
+    font-weight: normal;
+}
+.quote-content .quote-item h2{
+    color: var(--gold-color);
+}
+.quote-content .quote-item h2 i{
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+.quote-section .slide-prev, .slide-next{
+    font-size: 3rem;
+    position: absolute; 
+    font-weight: normal;
+    color: var(--gold-color);
+    opacity: .5;
+}
+.quote-section .slide-prev{
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+.quote-section .slide-next{
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-indicator{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+.carousel-dot{
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    width: 30px;
+    height: 6px;
+    cursor: pointer;
+    background-color: var(--white-color);
+    background-clip: padding-box;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: .5;
+    transition: opacity .6s ease;
+    margin: 1rem;
+}
+
+/* ------------------------------------------ */
+
+/* Image section */
+section.image-section{
+    width: 100%;
+    height: 90vh;
+}
+section.image-section img{
+    width: 100%;
+    height: 100%;
+}
+
+/* Footer section */
+section.footer-section{
+    text-align: center;
+    padding: 5rem;
+    position: relative;
+    transition: .5s;
+}
+section.footer-section i{
+    font-size: 3rem;
+    color: var(--gold-color);
+}
+section.footer-section .links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    position: relative;
+}
+section.footer-section p{
+    margin-top: 1rem;
+    color: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+}
+section.footer-section .right{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;    
+    height: 1.5rem;
+    padding-top: .7rem;
+    padding-bottom: 2rem;
+    background: #000;
+    color: var(--font-light-color);
+}
+/* Media queries */
+
+@media screen and (max-width: 1024px){
+    nav{
+        padding-left: 10%;
+    }
+    .basic-title  h2{
+        margin: .7rem 0;
+        font-size: 2.5rem;
+    }
+    /* Order section */
+    section.order-section{
+        display: grid;
+        grid-template-columns: repeat( 1, 1fr );
+    }
+    .order-section .order-form{
+        padding: 3rem 0 ;
+    }
+    /* Cheff section */
+    section.cheff-section{
+        grid-template-columns: repeat(1, 1fr);
+        padding: 2rem;
+        
+    }  
+    .cheff-section .cheff-title{
+        transform: translateY(0);
+        order: 1;
+    }
+    .cheff-section .cheff-image{
+        padding-left: 0;
+    }
+    /* Menu section */
+    section.menu-section .menu-content{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr );
+        text-align: left;
+    }
+    section.menu-section .menu-content{
+        text-align: center;                                                                                                                                                                                     
+        padding: 4rem 1rem;
+    
+    }
+    /* Image section */
+    section.image-section{
+        width: 100%;
+        height: 50vh;
+    }
+   
+}
+@media screen and (max-width: 992px){
+    
+    nav ul{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: -100%;   
+        height: 60vh;
+        justify-content: center;
+        top: 75px;
+        align-items: center;
+        background: var(--background-dark-grey);
+        text-align: center;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    nav ul li{
+        padding: 10px 20px;
+        display: block;
+        width: 100%;    
+        
+    }
+    nav ul li:hover{
+        background: none;
+    }
+    nav ul li a:active, nav ul li a:focus {
+        background-color: var(--background-dark-grey);
+    }
+    .bar{
+        position: absolute;
+        display: block;
+        right: 150px;
+    }
+    #checkmenu:checked ~ ul{
+        left: -30px;
+    }
+    .basic-title  h2{
+        margin: .7rem 0;
+        font-size: 2.5rem;
+    }
+    /* Order section */
+    section.order-section{
+        display: grid;
+        grid-template-columns: repeat( 1, 1fr );
+    }
+    .order-section .order-form{
+        padding: 3rem 0 ;
+    }
+    /* Cheff section */
+    section.cheff-section{
+        grid-template-columns: repeat(1, 1fr);
+        padding: 2rem;
+        
+    }  
+    .cheff-section .cheff-title{
+        transform: translateY(0);
+        order: 1;
+    }
+    .cheff-section .cheff-image{
+        padding-left: 0;
+    }
+    /* Menu section */
+    section.menu-section .menu-content{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr );
+        text-align: left;
+    }
+    section.menu-section{
+        text-align: center;                                                                                                                                                                                     
+        padding: 4rem 2rem;
+    
+    }
+   
+}
+@media screen and (max-width: 767px){
+    .basic-title  h2{
+        margin: .7rem 0;
+        font-size: 2rem;
+    } 
+    /* Banner section */
+    section.banner-section{
+        grid-template-columns: repeat(2, 1fr );
+    }
+    /* Image section */
+    section.image-section{
+        width: 100%;
+        height: 30vh;
+    }
+ 
+}
+@media screen and (max-width: 576px){
+    /* Nav section */
+    nav ul{
+        height: 60vh;
+    }
+    /* Menu section */
+    section.menu-section{
+        padding: 1rem 0rem;
+    }
+    section.menu-section .menu-content{
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+       
+    }
+    section.menu-section .menu-content .menu-item{
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       padding: 0; 
+       align-items: center;
+    }
+    section.menu-section .menu-content .menu-item .img-content img{
+        width: 100%;
+    }
+    section.menu-section .menu-content .menu-item .img-content{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        
+    }
+    section.menu-section .menu-content .menu-item .text-content .title{
+        width: 100%;
+    }
+    section.menu-section .menu-content .menu-item .text-content{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem; 
+    }
+    section.menu-section .menu-content .menu-item .cost-content{
+        width: 100%;
+        margin-top: .5rem   ;
+    }
+    /* Footer Section */
+    section.footer-section .links{
+        flex-direction: column;
+    }
+
+}
+@media screen and (max-width: 359px){
+    .basic-title  h2{
+        margin: .5rem 0;
+        font-size: 1.8rem;
+    }
+    /* Order section */
+    section.order-section{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr );
+        padding: 1rem;
+    }
+    .order-section .order-form{
+        padding: 3rem 0 ;
+    }
+    /* Cheff section */
+    .cheff-section{
+        text-align: center;
+    }
+    .cheff-section .cheff-image{
+        padding-left: 0;
+    }
+    /* Quote section */
+    section.quote-content{
+        padding: 1rem .5rem;
+        height: 100px;
+    }
+    section.quote-section .carousel-indicator{
+        padding: 1rem;
+        display: flex;
+        margin: 1rem 0;
+
+    }
+    section.quote-section .quote-item{
+        padding: 0 .5rem;
+        width: 100%;
+
+    }
+}
