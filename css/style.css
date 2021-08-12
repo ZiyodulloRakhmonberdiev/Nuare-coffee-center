@@ -226,7 +226,7 @@ nav{
     padding: 1rem 0;
     position: fixed;
     padding-left: 18%;
-    width: 100%;
+    max-width: 1360px;
 }
 .bar, #checkmenu{
     display: none;
