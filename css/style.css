@@ -6,6 +6,7 @@
 body{
     font-family: 'Lato', sans-serif;
     background-color: var(--main-background-color);
+    max-width: 1360px;
 }
 body::-webkit-scrollbar{
         width: 9px;
@@ -43,7 +44,9 @@ body::-webkit-scrollbar-track{
 
 }
 /*Global styles  */
-
+section{
+    max-width: 1360px;
+}
 .basic-title{
     display: flex;
     flex-direction: column;  
