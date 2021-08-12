@@ -490,7 +490,7 @@ section.quote-section .offer-slider{
 /* Image section */
 section.image-section{
     width: 100%;
-    height: 90vh;
+    height: 100%;
 }
 section.image-section img{
     width: 100%;
